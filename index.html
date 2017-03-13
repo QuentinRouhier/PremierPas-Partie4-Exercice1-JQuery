@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>exercie 1</title>
+</head>
+<body>
+  <select class="" name="" id="choice">
+    <option value="pierre">pierre</option>
+    <option value="feuille">feuille</option>
+    <option value="ciseaux">ciseaux</option>
+  </select>
+  <button type="button" name="button" id="button">shifumi</button>
+  <p id="win">victoire: 0</p>
+  <p id="loose">defaite: 0</p>
+  <p id="equality">egalite: 0</p>
+  <p id="percent"> % victoire: 0%</p>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous">
+  </script>
+  <script>
+  var win = 0;
+  var loose = 0;
+  var equality = 0;
+  $('#button').click(function() {
+    var possibilityIA = ['pierre', 'feuille', 'ciseaux'];
+    var choicePlayer = $('#choice').val();
+    var choiceIA = possibilityIA[Math.floor(Math.random() * 3 )];
+    if (choicePlayer == 'pierre' && choiceIA == 'ciseaux' || choicePlayer == 'ciseaux' && choiceIA == 'feuille' || choicePlayer == 'feuille' && choiceIA == 'pierre'){
+      win ++
+      $('#win').text('victoire: ' + win);
+    }else if (choiceIA == 'pierre' && choicePlayer == 'ciseaux' || choiceIA == 'ciseaux' && choicePlayer == 'feuille' || choiceIA == 'feuille' && choicePlayer == 'pierre'){
+      loose ++
+      $('#loose').text('defaite: ' + loose);
+    }else{
+      equality ++
+      $('#equality').text('egaliter: ' + equality);
+    }
+    $('#percent').text('% victoire: ' + win / (win + loose + equality));
+  });
+  </script>
+</body>
+</html>
